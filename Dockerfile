@@ -31,7 +31,7 @@ RUN apt-get install -y mc vim nano
 RUN apt-get install -y mysql-client
 
 # Install "psql" – https://www.postgresql.org/docs/current/static/app-psql.html
-RUN apt-get install -y postgresql-client-common
+RUN apt-get install -y postgresql-client
 
 # Install "ImageMagick" executable – https://www.imagemagick.org/script/index.php
 RUN apt-get install -y imagemagick
