@@ -1,8 +1,10 @@
 FROM php:5.6-apache
 MAINTAINER Michał Szczech <m.szczech@hotmail.com>
 
+# Setup timezone
 ENV TZ=Europe/Warsaw
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN echo "date.timezone=$TZ" >> /usr/local/etc/php/conf.d/default.ini
 
 # Update sources
 RUN apt-get update -y
@@ -60,7 +62,7 @@ RUN docker-php-ext-install mysql
 RUN docker-php-ext-install mysqli
 
 # Install PHP "pdo" extension – http://php.net/manual/pl/book.pdo.php
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql pdo_sqlite
 
 # Install PHP "opcache" extension – http://php.net/manual/en/book.opcache.php
 RUN docker-php-ext-install opcache
