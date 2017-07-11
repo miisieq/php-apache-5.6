@@ -9,13 +9,13 @@ RUN echo "date.timezone=$TZ" >> /usr/local/etc/php/conf.d/default.ini
 # Update sources
 RUN apt-get update -y
 
-# Install "mod_rewrite" – http://httpd.apache.org/docs/current/mod/mod_rewrite.html
+# Enable "mod_rewrite" – http://httpd.apache.org/docs/current/mod/mod_rewrite.html
 RUN a2enmod rewrite
 
-# Install "mod_headers" – http://httpd.apache.org/docs/current/mod/mod_headers.html
+# Enable "mod_headers" – http://httpd.apache.org/docs/current/mod/mod_headers.html
 RUN a2enmod headers
 
-# Install "mod_expires" – http://httpd.apache.org/docs/current/mod/mod_expires.html
+# Enable "mod_expires" – http://httpd.apache.org/docs/current/mod/mod_expires.html
 RUN a2enmod expires
 
 # Install "Git" – https://git-scm.com/
@@ -27,8 +27,11 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Install Midnight Commander, Vim, Nano
 RUN apt-get install -y mc vim nano
 
-#Install "mysql-client" – https://dev.mysql.com/doc/refman/5.7/en/mysql.html
+# Install "mysql-client" – https://dev.mysql.com/doc/refman/5.7/en/mysql.html
 RUN apt-get install -y mysql-client
+
+# Install "psql" – https://www.postgresql.org/docs/current/static/app-psql.html
+RUN apt-get install -y postgresql-client-common
 
 # Install "ImageMagick" executable – https://www.imagemagick.org/script/index.php
 RUN apt-get install -y imagemagick
