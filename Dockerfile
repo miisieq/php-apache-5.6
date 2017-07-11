@@ -64,7 +64,9 @@ RUN docker-php-ext-install mysql
 # Install PHP "mysqli" extension – http://php.net/manual/pl/book.mysqli.php
 RUN docker-php-ext-install mysqli
 
-# Install PHP "pdo" extension – http://php.net/manual/pl/book.pdo.php
+# Install PHP "pdo" extension with "mysql", "pgsql", "sqlite" drivers – http://php.net/manual/pl/book.pdo.php
+RUN apt-get install -y libpq-dev
+RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql pdo_sqlite
 
 # Install PHP "opcache" extension – http://php.net/manual/en/book.opcache.php
